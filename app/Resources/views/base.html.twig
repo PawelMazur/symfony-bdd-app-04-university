@@ -3,35 +3,42 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <h1>School Register</h1>
-        {% block login_logout_panel %}
-            <ul>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <h1>School Register</h1>
+    {% block login_logout_panel %}
+        <nav>
+        <ul>
+            <li>
+                <a href="{{ path('homepage') }}">
+                    Homepage
+                </a>
+            </li>
+            {% if is_granted('ROLE_USER') %}
+                <li>Logged in as {{ app.user.username }}</li>
                 <li>
-                    <a href="{{ path('homepage') }}">
-                        Homepage
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                     </a>
                 </li>
-                {% if is_granted('ROLE_USER') %}
-                    <li>Logged in as {{ app.user.username }}</li>
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="{{ path('fos_user_security_login') }}">
-                            {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        {% endblock login_logout_panel %}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+                <li>
+                    <a href="{{ path('admin_employee') }}">
+                        pupils
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('fos_user_security_login') }}">
+                        {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        </nav>
+    {% endblock login_logout_panel %}
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
