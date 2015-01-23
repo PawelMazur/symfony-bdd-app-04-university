@@ -15,10 +15,10 @@ Feature: I would like to edit room
     Then I should see "<number>"
 
   Examples:
-    | number         | 
-    | ROOM RECORD 1 | 
-    | ROOM RECORD 2 | 
-    | ROOM RECORD 3 | 
+    | number | 
+    |   11   | 
+    |   22   | 
+    |   33   | 
 
 
     Scenario Outline: Edit records
@@ -39,8 +39,8 @@ Feature: I would like to edit room
     And I should not see "<old-number>"
 
   Examples:
-    | old-number         | new-number              |
-    | ROOM RECORD 1      | NEW ROOM RECORD 10 |
+    | old-number | new-number               |
+    | 22         | 100                      |
 
 
    Scenario Outline: Delete records
@@ -50,14 +50,14 @@ Feature: I would like to edit room
     And I fill in "Password" with "1234"
     And I press "Login"
     And I go to "/admin/room"
-    Then I should see "<number >"
-    When I follow "<number >"
-    Then I should see "<number >"
+    Then I should see "<number>"
+    When I follow "<number>"
+    Then I should see "<number>"
     When I press "Delete"
-    Then I should not see "<number >"
+    Then I should not see "<number>"
 
   Examples:
-    | number                  |
-    | ROOM RECORD 2      |
-    | ROOM RECORD 3      |
-    | NEW ROOM RECORD 10 |
+    | number   |
+    |  11      |
+    |  33      |
+    |  100     |
