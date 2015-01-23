@@ -39,8 +39,8 @@ Feature: I would like to edit faculty
     And I should not see "<old-name>"
 
   Examples:
-    | old-surname                 | new-name                     |
-    | FACULTY RECORD Physics      | NEW FACULTY RECORD Chemistry |
+    | old-name                    | new-name                     |
+    | FACULTY RECORD Biology      | NEW FACULTY RECORD Chemistry |
 
 
    Scenario Outline: Delete records
@@ -57,7 +57,7 @@ Feature: I would like to edit faculty
     Then I should not see "<name>"
 
   Examples:
-    |  surname                   |
+    | name                   |
     | FACULTY RECORD Mathematics   |
-    | FACULTY RECORD Biology       |
+    | FACULTY RECORD Physics      |
     | NEW FACULTY RECORD Chemistry |
