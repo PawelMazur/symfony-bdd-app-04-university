@@ -9,6 +9,8 @@ Feature: Main menu - hyperlinks
         And I go to homepage
        Then the "nav" element should contain "employee"
        Then the "nav" element should contain "faculty"
+       Then the "nav" element should contain "cathedral"
        When I follow "Logout"
        Then the "nav" element should not contain "employee"
        Then the "nav" element should not contain "faculty"
+       Then the "nav" element should contain "cathedral"
