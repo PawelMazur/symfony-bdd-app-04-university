@@ -10,37 +10,43 @@
     <h1>School Register</h1>
     {% block login_logout_panel %}
         <nav>
-        <ul>
-            <li>
-                <a href="{{ path('homepage') }}">
-                    Homepage
-                </a>
-            </li>
-            {% if is_granted('ROLE_USER') %}
-                <li>Logged in as {{ app.user.username }}</li>
+            <ul>
                 <li>
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    <a href="{{ path('homepage') }}">
+                        Homepage
                     </a>
                 </li>
-                <li>
-                    <a href="{{ path('admin_employee') }}">
-                        employee
-                    </a>
-                </li>
-                <li>
-===>                    <a href="{{ path('admin_faculty') }}">
-===>                        faculty
-===>                    </a>
-===>                </li>
-            {% else %}
-                <li>
-                    <a href="{{ path('fos_user_security_login') }}">
-                        {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
+                {% if is_granted('ROLE_USER') %}
+                    <li>Logged in as {{ app.user.username }}</li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_employee') }}">
+                            employee
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_faculty') }}">
+                            faculty
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_cathedral') }}">
+                            cathedral
+                        </a>
+                    </li>
+                    
+                {% else %}
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">
+                            {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
         </nav>
     {% endblock login_logout_panel %}
 {% block body %}{% endblock %}
